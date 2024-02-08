@@ -27,3 +27,15 @@ about the current recursive call.
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. You do not need to prove that the invariant is correct. Add
 your answer to this markdown file.
+
+### Answer
+
+Since the Fibonacci Sequence is recursively defined, we can use similar logic to what we discussed in the lecture pertaining to **useful** invariants to discern one for this function. 
+
+Recursion and induction go hand-in-hand in the fact that induction can very easily prove recursive definitions to be true. In inductive proofs, we need to establish an induction hypothesis in which we can assume to be true for the next smallest element. Thus, a good invariant for any recursive function would be one that relates the ith iteration to the (i - 1)th iteration. In this case, we know that the current iteration will **always** be equal to the sum of the previous two iterations. Therefore, a good invariant could be:
+
+```javascript
+//Invariant: fib(n) = fib(n - 1) + fib(n -2)
+```
+
+Like with induction with it's induction-hypothesis, that invariant applies to every **recursive** case of the function. The base cases do not necessarily follow that invariant, but they also don't necessarily need to.
