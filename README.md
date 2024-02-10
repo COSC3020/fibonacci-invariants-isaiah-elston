@@ -39,3 +39,11 @@ Recursion and induction go hand-in-hand in the fact that induction can very easi
 ```
 
 Like with induction with it's induction-hypothesis, that invariant applies to every **recursive** case of the function. The base cases do not necessarily follow that invariant, but they also don't necessarily need to.
+
+#### Addendum
+Since the `fib(n)` function will always return an `Array` data-type, the aforementioned invariant can be extended to denote that:
+
+```javascript
+arr[n] = arr[n - 2] + arr[n - 1];
+```
+Where `arr` arbitrarily represents the output of `fib(n)` at the `n`th iteration. Therefore, the `n`th value of the array is always defined by the `(n - 1)`th and `(n - 2)`th values of the array. In conclusion, the array's previous values will always define the following value whenever a recursive step occurs.
