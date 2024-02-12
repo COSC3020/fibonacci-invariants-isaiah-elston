@@ -35,17 +35,9 @@ Since the Fibonacci Sequence is recursively defined, we can use similar logic to
 Recursion and induction go hand-in-hand in the fact that induction can very easily prove recursive definitions to be true. In inductive proofs, we need to establish an induction hypothesis in which we can assume to be true for the next smallest element. Thus, a good invariant for any recursive function would be one that relates the ith iteration to the (i - 1)th iteration. In this case, we know that the current iteration will **always** be equal to the sum of the previous two iterations. Therefore, a good invariant could be:
 
 ```javascript
-//Invariant: n = (n - 1) + (n - 2)
+//Invariant: n = (n - 1) + (n - 2) => arr[n] = arr[n - 1] + arr[n - 2]
 ```
 
-Where `n` represents the $n$th fibonacci number. Thus, the invariant is related to the properties of the Fibonacci Sequence and **not** the `fib(n)` function itself. Like the addendum discusses below, this invariant explains that the array can always populate itself by virtue of the Fibonacci Sequence and its intrinsic properties.
+Where `n` represents the `n`th Fibonacci number. Since the `fib(n)` function populates an array with the elements of the Fibonacci sequence up to the `n`th Fibonacci number, it carries that `arr[n] = arr[n - 1] + arr[n - 2]`. This is useful because it enables us to use the properties of the Fibonacci Sequence to show how the `n`th element of the array can always be defined by the `(n - 1)`th and `(n - 2)`th elements of the array. Since we know that, we can use the invariant to be able to write `fib(n)` to work for any arbitrary `n`.
 
 Like with induction with it's induction-hypothesis, that invariant applies to every **recursive** case of the function. The base cases do not necessarily follow that invariant, but they also don't necessarily need to.
-
-#### Addendum
-Since the `fib(n)` function will always return an `Array` data-type, the aforementioned invariant can be extended to denote that:
-
-```javascript
-arr[n] = arr[n - 2] + arr[n - 1];
-```
-Where `arr` arbitrarily represents the output of `fib(n)` at the `n`th iteration. Therefore, the `n`th value of the array is always defined by the `(n - 1)`th and `(n - 2)`th values of the array. In conclusion, the array's previous values will always define the following value whenever a recursive step occurs.
